@@ -55,6 +55,13 @@ async function getById(req: Request, res: Response) {
   res.send(recommendation);
 }
 
+async function getByName(req: Request, res: Response) {
+  const { name } = req.params;
+
+  const recommendation = await recommendationService.findByName(name);
+  res.send(recommendation);
+}
+
 export const recommendationController = {
   insert,
   upvote,
@@ -63,4 +70,5 @@ export const recommendationController = {
   getTop,
   get,
   getById,
+  getByName,
 };
