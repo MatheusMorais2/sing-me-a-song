@@ -5,11 +5,7 @@ import {
 import { recommendationRepository } from "../../src/repositories/recommendationRepository.js";
 import { prisma } from "../../src/database.js";
 import { jest } from "@jest/globals";
-import {
-  conflictError,
-  notFoundError,
-  AppError,
-} from "../../src/utils/errorUtils.js";
+import { conflictError, notFoundError } from "../../src/utils/errorUtils.js";
 
 beforeEach(() => {
   jest.clearAllMocks();
@@ -145,19 +141,6 @@ describe("Upvote", () => {
     expect(updateScore).toBeCalledWith(1, "increment");
   });
 });
-
-/* describe("Get id or fail", () => {
-  it("Should find a recommendation given a valid id", async () => {
-    jest.spyOn(recommendationRepository, "find").mockResolvedValueOnce({
-      id: 1,
-      name: "carolina",
-      youtubeLink: "https://www.youtube.com/watch?v=s1PraTcSrso",
-      score: -5,
-    });
-
-    const search = await recommendationService.get
-  })
-}) */
 
 describe("Get", () => {
   it("Should find all recommendations", async () => {
@@ -324,9 +307,7 @@ describe("findByName", () => {
   });
 
   it("Should throw an error if no name was given", async () => {
-    const repositorySearch = jest
-      .spyOn(recommendationRepository, "findByName")
-      .mockResolvedValue(null);
+    jest.spyOn(recommendationRepository, "findByName").mockResolvedValue(null);
 
     let thrownError;
     try {
