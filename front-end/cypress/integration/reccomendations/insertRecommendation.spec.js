@@ -35,7 +35,7 @@ describe("Insert recommendation", () => {
 
     cy.contains("Ainda gosto dela").invoke("attr", "id").as("idValue");
 
-    for (let i = 0; i < 7; i++) {
+    for (let i = 0; i < 6; i++) {
       vote("downvote");
     }
 
